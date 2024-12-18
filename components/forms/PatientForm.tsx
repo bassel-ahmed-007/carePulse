@@ -9,6 +9,7 @@ import SubmitButton from "../SubmitButton";
 import { useState } from "react";
 import { UserFormValidation } from "@/lib/validation";
 import { useRouter } from "next/navigation";
+import { createUser } from "@/lib/actions/patien.actions";
 
 const PatientForm = () => {
   const router = useRouter();
@@ -24,7 +25,7 @@ const PatientForm = () => {
   });
 
   //=============== 2. Define a submit handler.
-  async function onSubmit({
+  function onSubmit({
     name,
     email,
     phone,
@@ -32,9 +33,9 @@ const PatientForm = () => {
     setIsLoading(true);
 
     try {
-      //   const userData = { name, email, phone };
-      //   const user = await createSecureServer(userData)
-      //   if(user) router.push(`/patients/${user.$id}/register`)
+      const userData = { name, email, phone };
+      const user = await createUser(userData);
+      if (user) router.push(`/patients/${user.$id}/register`);
     } catch (err) {
       console.log(err);
     }
