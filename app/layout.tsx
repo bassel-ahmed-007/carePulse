@@ -26,10 +26,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head />
       <body
-        className={cn(
-          "min-h-screen bg-dark-300 font-sans antialiased",
-          fontSans.variable
-        )}
+        className={cn("min-h-screen  font-sans antialiased", fontSans.variable)}
       >
         <ThemeProvider attribute="class" defaultTheme="dark">
           {children}
